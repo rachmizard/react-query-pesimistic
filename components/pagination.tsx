@@ -30,12 +30,14 @@ export default function Pagination(props: PaginationProps) {
             </p>
             <div className="flex items-center space-x-3">
                 <Button
+                    size="sm"
                     disabled={isDisablePrev}
                     onClick={() => onChange(page - 1)}
                 >
                     Prev Page
                 </Button>
                 <Button
+                    size="sm"
                     disabled={isDisableNext}
                     onClick={() => onChange(page + 1)}
                 >

@@ -98,13 +98,14 @@ export default function PostCreate() {
                         />
                     </InputControl>
                 </div>
-                <div className="mt-20 flex space-x-2">
+                <div className="mt-20 space-x-2">
                     <Button isDisabled={formState.isSubmitting} type="submit">
                         {formState.isSubmitting ? "Submitting..." : "Submit"}
                     </Button>
                     <Button
                         isDisabled={formState.isSubmitting}
                         onClick={() => reset()}
+                        variant="btn-danger"
                     >
                         Reset
                     </Button>

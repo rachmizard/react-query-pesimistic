@@ -30,6 +30,7 @@ export default function useUndoablePromise<TData, TVariables>(
                     <div className="flex items-center space-x-10">
                         <span>{submittingText}</span>
                         <Button
+                            variant="btn-primary"
                             onClick={() => {
                                 cancelRef.current && cancelRef.current();
                                 toast.dismiss(t.id);

@@ -1,19 +1,26 @@
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
+import clsx from "clsx";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     isDisabled?: boolean;
+    variant?: "btn-primary" | "btn-secondary" | "btn-danger";
+    size?: "sm" | "md" | "lg";
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-    const { children, isDisabled, disabled, ...rest } = props;
-    const baseClassName =
-        "min-w-[100px] bg-blue-400 text-white rounded-md px-4 py-2 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 disabled:ring-0 hover:bg-blue-500 transition-all duration-400 shadow-md";
+    const { children, isDisabled, disabled, size, variant, ...rest } = props;
 
-    const buttonClassName = baseClassName;
+    const baseClassName = `btn-base`;
+
+    const sizeClassName = clsx(
+        size === "lg" && "btn-lg",
+        size === "md" && "btn-md",
+        size === "sm" && "btn-sm"
+    );
 
     return (
         <button
-            className={buttonClassName}
+            className={`${baseClassName} ${sizeClassName} ${variant}`}
             ref={ref}
             disabled={isDisabled || disabled}
             {...rest}
@@ -24,5 +31,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 });
 
 Button.displayName = "Button";
+
+Button.defaultProps = {
+    size: "md",
+    variant: "btn-primary",
+};
 
 export default Button;

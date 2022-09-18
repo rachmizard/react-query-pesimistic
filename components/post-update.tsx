@@ -103,12 +103,18 @@ export default function PostUpdate(props: PostUpdateProps) {
                         />
                     </InputControl>
                 </div>
-                <div className="mt-20 flex space-x-2">
-                    <Button isDisabled={formState.isSubmitting} type="submit">
+                <div className="mt-20 space-x-2">
+                    <Button
+                        size="sm"
+                        isDisabled={formState.isSubmitting}
+                        type="submit"
+                    >
                         {formState.isSubmitting ? "Submitting..." : "Submit"}
                     </Button>
                     <Button
                         type="button"
+                        variant="btn-danger"
+                        size="sm"
                         isDisabled={formState.isSubmitting}
                         onClick={() => reset(defaultValues)}
                     >
@@ -117,6 +123,8 @@ export default function PostUpdate(props: PostUpdateProps) {
 
                     <Button
                         type="button"
+                        variant="btn-secondary"
+                        size="sm"
                         isDisabled={formState.isSubmitting}
                         onClick={onCancel}
                     >

@@ -83,6 +83,8 @@ export const useCreatePost = () => {
         },
         onSuccess: () => {
             toast.success("Post created successfully");
+        },
+        onSettled: () => {
             queryClient.invalidateQueries(["posts", "list"]);
         },
     });
@@ -131,8 +133,10 @@ export const useUpdatePost = () => {
         },
         onSuccess: (_, variables) => {
             toast.success("Post updated successfully");
-            queryClient.invalidateQueries(["posts", "list"]);
             queryClient.invalidateQueries(["posts", "detail", variables.id]);
+        },
+        onSettled: () => {
+            queryClient.invalidateQueries(["posts", "list"]);
         },
     });
 };
@@ -177,6 +181,8 @@ export const useDeletePost = () => {
         },
         onSuccess: () => {
             toast.success("Post deleted successfully");
+        },
+        onSettled: () => {
             queryClient.invalidateQueries(["posts", "list"]);
         },
     });

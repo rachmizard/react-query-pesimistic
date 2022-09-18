@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn-base {
+        @apply rounded-md disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 disabled:ring-0  transition-all duration-300 shadow-md
+    }
+
+    .btn-lg {
+      @apply text-lg px-4 py-2 min-w-[100px]
+    }
+
+    .btn-md {
+        @apply text-base px-3 py-2 min-w-[80px]
+    }
+
+    .btn-sm {
+        @apply text-sm px-2 py-1 min-w-[72px]
+    }
+
+    .btn-primary {
+        @apply bg-blue-500 text-white hover:bg-blue-600 focus:ring focus:ring-blue-300 active:ring active:ring-blue-300
+    }
+
+    .btn-secondary {
+        @apply bg-gray-500 text-white hover:bg-gray-300 focus:ring focus:ring-gray-300 active:ring active:ring-gray-300
+    }
+
+    .btn-danger {
+        @apply bg-red-500 text-white hover:bg-red-600 focus:ring focus:ring-red-300 active:ring active:ring-red-300
+    }
+
+}

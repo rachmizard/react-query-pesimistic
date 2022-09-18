@@ -73,7 +73,10 @@ const PostList = () => {
             <ul className="divide-y divide-gray-200">
                 {items?.map((post, index) => {
                     return (
-                        <li key={post.id} className="py-4 flex justify-between">
+                        <li
+                            key={post.id}
+                            className="py-4 flex space-x-2 items-center justify-between"
+                        >
                             <div
                                 className="ml-3 cursor-pointer"
                                 onClick={() => {
@@ -98,12 +101,15 @@ const PostList = () => {
                                     {post.body}
                                 </p>
                             </div>
-                            <button
-                                className="text-red-400"
-                                onClick={() => deletePostById(post.id)}
-                            >
-                                Remove
-                            </button>
+                            <div>
+                                <Button
+                                    size="sm"
+                                    onClick={() => deletePostById(post.id)}
+                                    variant="btn-danger"
+                                >
+                                    Remove
+                                </Button>
+                            </div>
                         </li>
                     );
                 })}
@@ -136,6 +142,7 @@ const PostList = () => {
                 footer={
                     <>
                         <Button
+                            size="sm"
                             onClick={() => {
                                 setOpenEdit(true);
                                 setOpenDetail(false);
@@ -143,7 +150,11 @@ const PostList = () => {
                         >
                             Edit
                         </Button>
-                        <Button onClick={() => setOpenDetail(false)}>
+                        <Button
+                            variant="btn-secondary"
+                            size="sm"
+                            onClick={() => setOpenDetail(false)}
+                        >
                             Cancel
                         </Button>
                     </>

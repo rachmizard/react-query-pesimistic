@@ -9,6 +9,8 @@ import {
     QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import "tailwindcss/tailwind.css";
+
 import toast, { Toaster } from "react-hot-toast";
 
 import "../styles/globals.css";
