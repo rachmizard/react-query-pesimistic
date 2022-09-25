@@ -22,6 +22,13 @@ function MyApp({
     const [queryClient] = useState(
         () =>
             new QueryClient({
+                defaultOptions: {
+                    queries: {
+                        retry: 1,
+                        keepPreviousData: true,
+                        staleTime: 1000 * 60 * 5,
+                    },
+                },
                 queryCache: new QueryCache({
                     onError: (error: any, query) => {
                         toast.error(error.message);

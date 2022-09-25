@@ -13,12 +13,7 @@ import useUndoablePromise from "./useUndoablePromise";
 export const useFetchPosts = (params?: Partial<RequestGetParams>) => {
     return useQuery<ListResponse<PostType>, Error>(
         ["posts", "list", params],
-        () => fetchPosts(params),
-        {
-            retry: 1,
-            keepPreviousData: true,
-            staleTime: 1000 * 60 * 5,
-        }
+        () => fetchPosts(params)
     );
 };
 
@@ -30,9 +25,6 @@ export const useFetchPost = (
         ["posts", "detail", id, params],
         () => fetchPost(id, params),
         {
-            retry: 1,
-            keepPreviousData: true,
-            staleTime: 1000 * 60 * 5,
             enabled: !!id,
         }
     );

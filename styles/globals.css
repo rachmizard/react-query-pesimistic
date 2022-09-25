@@ -20,15 +20,15 @@
     }
 
     .btn-primary {
-        @apply bg-blue-500 text-white hover:bg-blue-600 focus:ring focus:ring-blue-300 active:ring active:ring-blue-300
+        @apply bg-blue-400 text-white hover:bg-blue-600 focus:ring focus:ring-blue-300 active:ring active:ring-blue-300
     }
 
     .btn-secondary {
-        @apply bg-gray-500 text-white hover:bg-gray-300 focus:ring focus:ring-gray-300 active:ring active:ring-gray-300
+        @apply bg-gray-400 text-white hover:bg-gray-300 focus:ring focus:ring-gray-300 active:ring active:ring-gray-300
     }
 
     .btn-danger {
-        @apply bg-red-500 text-white hover:bg-red-600 focus:ring focus:ring-red-300 active:ring active:ring-red-300
+        @apply bg-red-400 text-white hover:bg-red-600 focus:ring focus:ring-red-300 active:ring active:ring-red-300
     }
 
 }

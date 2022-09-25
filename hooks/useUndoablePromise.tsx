@@ -27,10 +27,11 @@ export default function useUndoablePromise<TData, TVariables>(
         (variables: TVariables): Promise<TData> => {
             toast(
                 (t) => (
-                    <div className="flex items-center space-x-10">
+                    <div className="flex items-center space-x-2">
                         <span>{submittingText}</span>
                         <Button
                             variant="btn-primary"
+                            size="sm"
                             onClick={() => {
                                 cancelRef.current && cancelRef.current();
                                 toast.dismiss(t.id);
@@ -42,6 +43,7 @@ export default function useUndoablePromise<TData, TVariables>(
                 ),
                 {
                     duration: timeout,
+                    className: "bg-gray-900",
                 }
             );
 

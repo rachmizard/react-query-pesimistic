@@ -68,52 +68,56 @@ const PostList = () => {
                 />
             </div>
 
-            <p>{isFetching ? "Fetching..." : ""}</p>
-
-            <ul className="divide-y divide-gray-200">
-                {items?.map((post, index) => {
-                    return (
-                        <li
-                            key={post.id}
-                            className="py-4 flex space-x-2 items-center justify-between"
-                        >
-                            <div
-                                className="ml-3 cursor-pointer"
-                                onClick={() => {
-                                    setOpenDetail(true);
-                                    setSelectedId(post.id);
-                                }}
-                                onMouseEnter={() => {
-                                    queryClient.prefetchQuery(
-                                        ["posts", "detail", post.id],
-                                        () => fetchPost(post.id),
-                                        {
-                                            staleTime: 1000 * 60 * 60,
-                                        }
-                                    );
-                                }}
+            <div className="relative">
+                <ul className="divide-y divide-gray-200">
+                    {items?.map((post, index) => {
+                        return (
+                            <li
+                                key={post.id}
+                                className="py-4 flex space-x-2 items-center justify-between"
                             >
-                                <p className="text-sm font-medium text-gray-900">
-                                    <span className="mr-2">{post.id}. </span>
-                                    <span>{post.title}</span>
-                                </p>
-                                <p className="text-sm text-gray-500">
-                                    {post.body}
-                                </p>
-                            </div>
-                            <div>
-                                <Button
-                                    size="sm"
-                                    onClick={() => deletePostById(post.id)}
-                                    variant="btn-danger"
+                                <div
+                                    className="ml-3 cursor-pointer"
+                                    onClick={() => {
+                                        setOpenDetail(true);
+                                        setSelectedId(post.id);
+                                    }}
+                                    onMouseEnter={() => {
+                                        queryClient.prefetchQuery(
+                                            ["posts", "detail", post.id],
+                                            () => fetchPost(post.id),
+                                            {
+                                                staleTime: 1000 * 60 * 60,
+                                            }
+                                        );
+                                    }}
                                 >
-                                    Remove
-                                </Button>
-                            </div>
-                        </li>
-                    );
-                })}
-            </ul>
+                                    <p className="text-sm font-medium text-gray-900">
+                                        <span className="mr-2">
+                                            {post.id}.{" "}
+                                        </span>
+                                        <span>{post.title}</span>
+                                    </p>
+                                    <p className="text-sm text-gray-500">
+                                        {post.body}
+                                    </p>
+                                </div>
+                                <div>
+                                    <Button
+                                        size="sm"
+                                        onClick={() => deletePostById(post.id)}
+                                        variant="btn-danger"
+                                    >
+                                        Remove
+                                    </Button>
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
+
+                {isFetching && <p>Updating data..</p>}
+            </div>
 
             <div className="mt-10">
                 <Pagination
